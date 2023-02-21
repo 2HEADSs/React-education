@@ -16,7 +16,7 @@
     <title>Me JSX Demo</title>
   </head>
   <body>
-    <div id="root"></div>
+    <main id="root"></main>
 
     <script>
       const rootDomElement = document.getElementById("root");
@@ -24,7 +24,9 @@
 
       //   create heading into header
       const headingElement = React.createElement("h1", {}, "Hello from React!");
-      const headerElement = React.createElement("header", {}, headingElement);
+      const paragrpahElement = React.createElement("p",{'className':"info"}, "Some info here!!!") 
+
+      const headerElement = React.createElement("header", {}, headingElement, paragrpahElement);
 
       rootReactElement.render(headerElement);
 
