@@ -9,6 +9,7 @@
 
       const headerElement = React.createElement(
             <header>
+                  <h1>Hello</h1>
                   <h2>Second try!!</h2>
             </header>
       );

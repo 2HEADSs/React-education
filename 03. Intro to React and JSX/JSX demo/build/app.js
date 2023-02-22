@@ -11,6 +11,11 @@ var headerElement = React.createElement(React.createElement(
       "header",
       null,
       React.createElement(
+            "h1",
+            null,
+            "Hello"
+      ),
+      React.createElement(
             "h2",
             null,
             "Second try!!"
