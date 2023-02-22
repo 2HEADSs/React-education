@@ -1,7 +1,7 @@
 var rootDomElement = document.getElementById("root");
 var rootReactElement = ReactDOM.createRoot(rootDomElement);
 
-// //   create heading into header
+//   create heading into header
 // const headingElement = React.createElement("h1", {}, "Hello from React!");
 // const paragrpahElement = React.createElement("p",{"className":"info"}, "Some info here!!!") 
 
@@ -14,6 +14,11 @@ var headerElement = React.createElement(React.createElement(
             "h2",
             null,
             "Second try!!"
+      ),
+      React.createElement(
+            "p",
+            null,
+            "Info!!!2"
       )
 ));
 
