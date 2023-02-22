@@ -368,7 +368,7 @@ function App() {
             <h3 className="content-ct"><span className="ti-email"></span> Contact Form</h3>
             <form className="form-horizontal" data-toggle="validator" role="form">
               <div className="form-group">
-                <label for="name" className="col-sm-3 control-label">Name<sup>*</sup></label>
+                <label htmlFor="name" className="col-sm-3 control-label">Name<sup>*</sup></label>
                 <div className="col-sm-9">
                   <input type="text" className="form-control" id="name" placeholder="John Doe" required/>
                   <div className="help-block with-errors pull-right"></div>
@@ -376,7 +376,7 @@ function App() {
                 </div>
               </div>
               <div className="form-group">
-                <label for="email" className="col-sm-3 control-label">Email<sup>*</sup></label>
+                <label htmlFor="email" className="col-sm-3 control-label">Email<sup>*</sup></label>
                 <div className="col-sm-9">
                   <input type="email" className="form-control" id="email" placeholder="you@youremail.com" required/>
                   <div className="help-block with-errors pull-right"></div>
@@ -384,7 +384,7 @@ function App() {
                 </div>
               </div>
               <div className="form-group">
-                <label for="message" className="col-sm-3 control-label">Your Message<sup>*</sup></label>
+                <label htmlFor="message" className="col-sm-3 control-label">Your Message<sup>*</sup></label>
                 <div className="col-sm-9">
                   <textarea id="message" className="form-control" rows="3" required></textarea>
                   <div className="help-block with-errors pull-right"></div>
