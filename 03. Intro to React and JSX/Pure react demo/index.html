@@ -17,11 +17,11 @@
   </head>
   <body>
       <main id="root">
-        <ul>
+        <!-- <ul>
             <li>first</li>
             <li>second</li>
             <li>third</li>
-        </ul>
+        </ul> -->
     </main>
 
     <script>
@@ -30,7 +30,7 @@
 
       //   create heading into header
       const headingElement = React.createElement("h1", {}, "Hello from React!");
-      const paragrpahElement = React.createElement("p",{" ":"info"}, "Some info here!!!") 
+      const paragrpahElement = React.createElement("p",{"className":"info"}, "Some info here!!!") 
 
       const headerElement = React.createElement("header", {}, headingElement, paragrpahElement);
 
