@@ -7,13 +7,14 @@ const root = ReactDOM.createRoot(rootElement);
 // Use JSX Syntax
 
 const Heading = (props) => {
-  return <h1 className="heading">Hello from React!</h1>;
+  return <h1 className="heading">Hello from {props.title}!</h1>;
 };
 
 const headerElement = (
   <div>
     <header className="header-container">
-        <Heading/>
+        <Heading title="React" />
+        <Heading title="Pavel" />
       <h2>Slogan here</h2>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Debitis

@@ -10,7 +10,9 @@ var Heading = function Heading(props) {
   return React.createElement(
     "h1",
     { className: "heading" },
-    "Hello from React!"
+    "Hello from ",
+    props.title,
+    "!"
   );
 };
 
@@ -20,7 +22,8 @@ var headerElement = React.createElement(
   React.createElement(
     "header",
     { className: "header-container" },
-    React.createElement(Heading, null),
+    React.createElement(Heading, { title: "React" }),
+    React.createElement(Heading, { title: "Pavel" }),
     React.createElement(
       "h2",
       null,
