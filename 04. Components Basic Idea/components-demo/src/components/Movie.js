@@ -1,5 +1,17 @@
 const Movie = (props) => {
-  return <article>Hello {props.title}</article>;
+    // log boolean
+    // console.log(props.isNew);
+    // console.log(props.isTrue);
+    return (
+        <article>
+            <h3>{props.title}</h3>
+            <p>Year: {props.year} </p>
+            <ul>
+                <li>{props.cast[0]}</li>
+                <li>{props.cast[1]}</li>
+            </ul>
+        </article>
+    );
 };
 
 export default Movie;
