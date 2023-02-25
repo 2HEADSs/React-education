@@ -3,20 +3,27 @@ import { useState } from "react";
 const Counter = (props) => {
     const [counter, setCounter] = useState(props.start);
 
-    const decrementCounterHnadler = (e) => {
+    const decrementCounterHanadler = (e) => {
         setCounter((oldCounter) => oldCounter - 1);
         // console.log(e);
         // console.log("Clicked");
     };
 
-    const clearCounterHnadler = (e) => {
+    const clearCounterHanadler = (e) => {
         setCounter(props.start);
         // setCounter(0);
         // console.log(e);
         // console.log("Clicked");
     };
 
-    const incrementCounterHnadler = (e) => {
+    const multiplyCounterHandler = (e) => {
+        setCounter((oldCounter) => (oldCounter *= 2));
+        // setCounter(0);
+        // console.log(e);
+        // console.log("Clicked");
+    };
+
+    const incrementCounterHanadler = (e) => {
         setCounter((oldCounter) => oldCounter + 1);
         // console.log(e);
         // console.log("Clicked");
@@ -24,9 +31,10 @@ const Counter = (props) => {
     return (
         <div>
             <h3>Counter: {counter} </h3>
-            <button onClick={decrementCounterHnadler}>-</button>
-            <button onClick={clearCounterHnadler}>Reset</button>
-            <button onClick={incrementCounterHnadler}>+</button>
+            <button onClick={decrementCounterHanadler}>-</button>
+            <button onClick={clearCounterHanadler}>Reset</button>
+            <button onClick={multiplyCounterHandler}>Multiply</button>
+            <button onClick={incrementCounterHanadler}>+</button>
         </div>
     );
 };
