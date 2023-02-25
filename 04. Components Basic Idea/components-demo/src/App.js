@@ -13,7 +13,7 @@ function App() {
         {
             title: "Harry Potter",
             year: 2008,
-            cast: ["Daniel Rdclif", "Ema Watson"],
+            cast: ["Daniel Radclif", "Ema Watson"],
         },
         { title: "Lord of the rings", year: 2008, cast: ["Orlando Bloom"] },
     ];

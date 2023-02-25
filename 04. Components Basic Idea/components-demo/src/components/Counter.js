@@ -55,7 +55,7 @@ const Counter = (props) => {
             <p style={{ fontSize: Math.max(counter, 1) + "em" }}>
                 {counter > 6 ? "Unstoppable" : getTitle(counter)}: {counter}
             </p>
-            <button onClick={decrementCounterHanadler}>-</button>
+            <button className="decrement" onClick={decrementCounterHanadler}>-</button>
             <button onClick={clearCounterHanadler}>Reset</button>
             <button onClick={multiplyCounterHandler}>Multiply</button>
             {/* <button onClick={incrementCounterHanadler}>+</button> */}
