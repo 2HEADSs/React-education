@@ -19,14 +19,14 @@ function App() {
     return (
         <div className="App">
             <h1>React Demo</h1>
-            <Timer/>
+            <Timer start={5} />
 
             <h1>Movie title</h1>
             {/* passing booolean
       isNew
        isTrue={true} */}
 
-            <MovieList movies ={movies} />
+            <MovieList movies={movies} />
         </div>
     );
 }
