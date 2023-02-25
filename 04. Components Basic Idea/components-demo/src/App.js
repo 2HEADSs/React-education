@@ -1,5 +1,6 @@
 import "./App.css";
 import MovieList from "./components/MovieList";
+import Timer from "./components/Timer";
 
 function App() {
     const movies = [
@@ -17,10 +18,14 @@ function App() {
     ];
     return (
         <div className="App">
+            <h1>React Demo</h1>
+            <Timer/>
+
             <h1>Movie title</h1>
             {/* passing booolean
       isNew
        isTrue={true} */}
+
             <MovieList movies ={movies} />
         </div>
     );
