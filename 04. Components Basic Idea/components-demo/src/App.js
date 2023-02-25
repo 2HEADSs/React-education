@@ -1,7 +1,7 @@
 import "./App.css";
 import Counter from "./components/Counter";
 import MovieList from "./components/MovieList";
-// import Timer from "./components/Timer";
+import Timer from "./components/Timer"; 
 
 function App() {
     const movies = [
@@ -20,11 +20,11 @@ function App() {
     return (
         <div className="App">
             <h1>Counter Demo</h1>
-            <Counter start= {23} />
+            <Counter start= {0} />
             <h1>React Demo</h1>
-            {/* <Timer start={50} />
+            {/* <Timer start={50} /> */}
             <Timer start={0} />
-            <Timer start={100} /> */}
+            {/* <Timer start={100} /> */}
 
             <h1>Movie title</h1>
             {/* passing booolean
