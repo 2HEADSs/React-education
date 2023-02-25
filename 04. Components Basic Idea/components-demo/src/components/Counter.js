@@ -52,13 +52,16 @@ const Counter = (props) => {
 
     return (
         <div>
-            <h3>
-                {counter > 6 ? "Unstoppable" : getTitle(counter)}: {counter}{" "}
-            </h3>
+            <p style={{ fontSize: Math.max(counter, 1) + "em" }}>
+                {counter > 6 ? "Unstoppable" : getTitle(counter)}: {counter}
+            </p>
             <button onClick={decrementCounterHanadler}>-</button>
             <button onClick={clearCounterHanadler}>Reset</button>
             <button onClick={multiplyCounterHandler}>Multiply</button>
-            <button onClick={incrementCounterHanadler}>+</button>
+            {/* <button onClick={incrementCounterHanadler}>+</button> */}
+            {counter < 10 ? (
+                <button onClick={incrementCounterHanadler}>+</button>
+            ) : null}
         </div>
     );
 };
