@@ -19,7 +19,9 @@ function App() {
     return (
         <div className="App">
             <h1>React Demo</h1>
-            <Timer start={5} />
+            <Timer start={50} />
+            <Timer start={0} />
+            <Timer start={100} />
 
             <h1>Movie title</h1>
             {/* passing booolean
