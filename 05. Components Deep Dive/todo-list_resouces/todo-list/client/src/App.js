@@ -38,6 +38,7 @@ function App() {
                     </div>
 
                     <div className="table-wrapper">
+                        
                         {/* <Loading /> */}
 
                         <TodoList

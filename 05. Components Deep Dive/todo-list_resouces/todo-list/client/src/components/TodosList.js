@@ -1,3 +1,5 @@
+import Todo from "./Todo";
+
 export default function TodoList({ todos, toggleTodoStatus }) {
     return (
         <table className="table">
@@ -10,24 +12,11 @@ export default function TodoList({ todos, toggleTodoStatus }) {
             </thead>
             <tbody>
                 {todos.map((todo) => (
-                    <tr key={todo.id}
-                        className={`todo ${
-                            todo.isCompleted ? "is-completed" : ""
-                        } `.trim()}
-                    >
-                        <td>{todo.text}</td>
-                        <td>
-                            {todo.isCompleted ? "Complete" : "Not Complete"}
-                        </td>
-                        <td className="todo-action">
-                            <button
-                                className="btn todo-btn"
-                                onClick={() => toggleTodoStatus(todo.id)}
-                            >
-                                Change status
-                            </button>
-                        </td>
-                    </tr>
+                    <Todo
+                        key={todo.id}
+                        {...todo}
+                        toggleTodoStatus={toggleTodoStatus}
+                    />
                 ))}
             </tbody>
         </table>
