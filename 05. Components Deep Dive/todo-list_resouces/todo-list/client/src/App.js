@@ -13,14 +13,19 @@ function App() {
             .then((data) => {
                 const result = Object.keys(data).map((id) => ({
                     id,
-                    ...data[id]
+                    ...data[id],
                 }));
-                setTodos(Object.values(data));
-                console.log(result);
+                setTodos(result);
             });
     }, []);
 
-    const toggleTodoStatus = (id) => {};
+    const toggleTodoStatus = (id) => {
+        setTodos((state) =>
+            state.map((t) =>
+                t.id === id ? { ...t, isCompleted: !t.isCompleted } : t
+            )
+        );
+    };
     return (
         <div className="App">
             <Header />

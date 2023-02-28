@@ -10,7 +10,7 @@ export default function TodoList({ todos, toggleTodoStatus }) {
             </thead>
             <tbody>
                 {todos.map((todo) => (
-                    <tr
+                    <tr key={todo.id}
                         className={`todo ${
                             todo.isCompleted ? "is-completed" : ""
                         } `.trim()}
@@ -22,7 +22,7 @@ export default function TodoList({ todos, toggleTodoStatus }) {
                         <td className="todo-action">
                             <button
                                 className="btn todo-btn"
-                                onClick={() => toggleTodoStatus(todos._id)}
+                                onClick={() => toggleTodoStatus(todo.id)}
                             >
                                 Change status
                             </button>
