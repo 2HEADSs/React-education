@@ -1,0 +1,8 @@
+.movie-article {
+    background-color: grey;
+    border-bottom: 2px solid red;
+    padding-bottom: 10px;
+}
+.button {
+    margin-right: 40px;
+}

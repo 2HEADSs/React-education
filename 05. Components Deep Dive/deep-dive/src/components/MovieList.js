@@ -24,7 +24,7 @@ export default function MovieList({ movies, onMovieDelete, onMovieSelect }) {
 
     //right way
     return (
-        <ul>
+        <ul style={{listStyleType: "none"}}>
             {movies.map((movie) => (
                 <li key={movie.id}>
                     <Movie

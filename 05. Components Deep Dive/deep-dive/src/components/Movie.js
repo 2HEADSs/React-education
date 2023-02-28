@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import styles from "./Movie.module.css";
 
 export default function Movie({
     id,
@@ -13,13 +14,17 @@ export default function Movie({
 }) {
     useEffect(() => {
         console.log(`Movie ${title} - mounted`);
+        return () => {
+            console.log(`Movie ${title} - unmounted`);
+        };
     }, []);
+
     useEffect(() => {
         console.log(`Movie ${title} - updated`);
     }, [selected]);
 
     return (
-        <article>
+        <article className={styles["movie-article"]}>
             <h3>
                 {title}, {year}
             </h3>
@@ -30,8 +35,8 @@ export default function Movie({
             </main>
             <footer>
                 <p>Director {director}</p>
-                <button onClick={() => onMovieDelete(id)}>Delete</button>
-                <button onClick={() => onMovieSelect(id)}>Selected</button>
+                <button className={styles["button"]} onClick={() => onMovieDelete(id)}>Delete</button>
+                <button className={styles["button"]} onClick={() => onMovieSelect(id)}>Selected</button>
             </footer>
         </article>
     );
