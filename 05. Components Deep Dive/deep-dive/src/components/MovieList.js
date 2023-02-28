@@ -1,6 +1,6 @@
 import Movie from "./Movie";
 
-export default function MovieList({ movies, onMovieDelete }) {
+export default function MovieList({ movies, onMovieDelete, onMovieSelect }) {
     // first way with desctructuring
     // const firstMovie = movies[0];
     // return <Movie {...firstMovie} />;
@@ -27,7 +27,11 @@ export default function MovieList({ movies, onMovieDelete }) {
         <ul>
             {movies.map((movie) => (
                 <li key={movie.id}>
-                    <Movie {...movie} onMovieDelete = {onMovieDelete} />
+                    <Movie
+                        {...movie}
+                        onMovieDelete={onMovieDelete}
+                        onMovieSelect={onMovieSelect}
+                    />
                 </li>
             ))}
         </ul>
