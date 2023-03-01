@@ -2,11 +2,12 @@ import { useState, useEffect } from "react";
 import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Table from "./componets/Table";
-// import Spinner from "./componets/Spinner";
+import Spinner from "./componets/Spinner";
 
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     fetch("http://localhost:3030/jsonstore/todos")
@@ -14,8 +15,8 @@ function App() {
       .then(data => {
         // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
         const resultArray = Object.keys(data).map(id => data[id])
+        setIsLoading(false)
         setTodos(resultArray)
-        console.log(resultArray);
       });
 
   }, [])
@@ -53,9 +54,10 @@ function App() {
 
           <div className="table-wrapper">
 
-            {/* <Spinner /> */}
+            {isLoading ? <Spinner /> : <Table todos={todos} toggleTask={toggleTask} />}
 
-            <Table todos={todos} toggleTask={toggleTask} />
+
+
           </div>
         </section>
       </main>

@@ -1,8 +1,8 @@
 export default function Spinner() {
     return (
-        <div class="loading-container">
-            <div class="loading-spinner">
-                <span class="loading-spinner-text">Loading</span>
+        <div className="loading-container">
+            <div className="loading-spinner">
+                <span className="loading-spinner-text">Loading</span>
             </div>
         </div>
     )
