@@ -9,22 +9,31 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/pizza")
+    fetch("http://localhost:3030/jsonstore/todos")
       .then(res => res.json())
       .then(data => {
-        // // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
-        // const resultArray = Object.keys(data).map(id => data[id])
-        // setTodos(resultArray)
-        // console.log(resultArray);
-        console.log(data);
+        // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
+        const resultArray = Object.keys(data).map(id => data[id])
+        setTodos(resultArray)
+        console.log(resultArray);
       });
 
   }, [])
 
 
   function toggleTask(id) {
-    setTodos(todos.map(x => console.log(x)))
+    setTodos(state => state.map(x => x._id === id ? ({ ...x, isCompleted: !x.isCompleted }) : x))
   }
+
+  function addTodo() {
+    let newId = Number(todos.length)
+    let text = prompt("New task:")
+    console.log(newId, text);
+    let newObject = { _id: newId, text: text, isCompleted: false }
+    console.log(newObject);
+    setTodos(state => [newObject, ...state])
+  }
+
 
 
   return (
@@ -39,7 +48,7 @@ function App() {
           <h1>Todo List</h1>
 
           <div className="add-btn-container">
-            <button className="btn">+ Add new Todo</button>
+            <button className="btn" onClick={addTodo}>+ Add new Todo</button>
           </div>
 
           <div className="table-wrapper">
