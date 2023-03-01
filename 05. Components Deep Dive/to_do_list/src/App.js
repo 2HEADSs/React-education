@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Footer from "./componets/Footer";
 import Header from "./componets/Header";
 import Table from "./componets/Table";
@@ -5,29 +6,46 @@ import Table from "./componets/Table";
 
 
 function App() {
-  
+  const [todos, setTodos] = useState([]);
 
+  useEffect(() => {
+    fetch("http://localhost:3030/jsonstore/todos")
+      .then(res => res.json())
+      .then(data => {
+        // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
+        const resultArray = Object.keys(data).map(id=> data[id])
+        console.log(resultArray);
+        setTodos(resultArray)
+      });
+
+  }, [])
+
+
+function toggleTask(id){
+  console.log(id);
+}
 
 
   return (
+
     <div className="App">
 
       <Header />
 
-      <main class="main">
+      <main className="main">
 
-        <section class="todo-list-container">
+        <section className="todo-list-container">
           <h1>Todo List</h1>
 
-          <div class="add-btn-container">
-            <button class="btn">+ Add new Todo</button>
+          <div className="add-btn-container">
+            <button className="btn">+ Add new Todo</button>
           </div>
 
-          <div class="table-wrapper">
+          <div className="table-wrapper">
 
             {/* <Spinner /> */}
 
-            <Table />
+            <Table todos={todos} toggleTask={toggleTask}/>
           </div>
         </section>
       </main>

@@ -1,22 +1,20 @@
-export default function Table() {
+import SingleLine from "./SingleLine";
+
+export default function Table(todos, toggleTask) {
+
+    console.log({todos});
     return (
-        <table class="table">
+        <table className="table">
             <thead>
                 <tr>
-                    <th class="table-header-task">Task</th>
-                    <th class="table-header-status">Status</th>
-                    <th class="table-header-action">Action</th>
+                    <th className="table-header-task">Task</th>
+                    <th className="table-header-status">Status</th>
+                    <th className="table-header-action">Action</th>
                 </tr>
             </thead>
             <tbody>
-
-                <tr class="todo is-completed">
-                    <td>Give dog a bath</td>
-                    <td>Complete</td>
-                    <td class="todo-action">
-                        <button class="btn todo-btn">Change status</button>
-                    </td>
-                </tr>
+                {todos.todos.map(todo => <SingleLine key={todo._id} {...todo} toggleTask = {toggleTask} />)}
+                {/* <SingleLine singleTodo = {todos.todos.map(x => )} /> */}
 
             </tbody>
         </table>
