@@ -9,20 +9,22 @@ function App() {
   const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3030/jsonstore/todos")
+    fetch("http://localhost:3030/pizza")
       .then(res => res.json())
       .then(data => {
-        // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
-        const resultArray = Object.keys(data).map(id => data[id])
-        setTodos(resultArray)
+        // // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
+        // const resultArray = Object.keys(data).map(id => data[id])
+        // setTodos(resultArray)
+        // console.log(resultArray);
+        console.log(data);
       });
 
   }, [])
 
 
-function toggleTask(id){
-  setTodos(todos.map(x => console.log(x)))
-}
+  function toggleTask(id) {
+    setTodos(todos.map(x => console.log(x)))
+  }
 
 
   return (
@@ -44,7 +46,7 @@ function toggleTask(id){
 
             {/* <Spinner /> */}
 
-            <Table todos={todos} toggleTask={toggleTask}/>
+            <Table todos={todos} toggleTask={toggleTask} />
           </div>
         </section>
       </main>

@@ -11,7 +11,7 @@ export default function Table({ todos, toggleTask }) {
                 </tr>
             </thead>
             <tbody>
-                {todos.map(todo => <SingleLine key={todo._id} {...todo} toggleTask={toggleTask} />)}
+                {todos.map(todo => <SingleLine key={todo.id} {...todo} toggleTask={toggleTask} />)}
                 {/* <SingleLine singleTodo = {todos.todos.map(x => )} /> */}
 
             </tbody>
