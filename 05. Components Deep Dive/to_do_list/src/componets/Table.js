@@ -1,8 +1,6 @@
 import SingleLine from "./SingleLine";
 
-export default function Table(todos, toggleTask) {
-
-    console.log({todos});
+export default function Table({ todos, toggleTask }) {
     return (
         <table className="table">
             <thead>
@@ -13,7 +11,7 @@ export default function Table(todos, toggleTask) {
                 </tr>
             </thead>
             <tbody>
-                {todos.todos.map(todo => <SingleLine key={todo._id} {...todo} toggleTask = {toggleTask} />)}
+                {todos.map(todo => <SingleLine key={todo._id} {...todo} toggleTask={toggleTask} />)}
                 {/* <SingleLine singleTodo = {todos.todos.map(x => )} /> */}
 
             </tbody>

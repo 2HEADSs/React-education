@@ -21,7 +21,7 @@ function App() {
 
 
 function toggleTask(id){
-  console.log(id);
+  setTodos(todos.map(x => console.log(x)))
 }
 
 

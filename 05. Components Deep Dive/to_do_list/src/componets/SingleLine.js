@@ -1,6 +1,5 @@
 export default function ({ _id,
     text, isCompleted, toggleTask }) {
-    // console.log(props);
     return (
         <tr className={isCompleted ? "todo is-completed " : "todo"}>
             <td>{text}</td>
