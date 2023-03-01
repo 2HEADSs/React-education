@@ -13,8 +13,7 @@ function App() {
       .then(res => res.json())
       .then(data => {
         // const resultArray = Object.keys(data).map(id=> ({id,...data[id]}))
-        const resultArray = Object.keys(data).map(id=> data[id])
-        console.log(resultArray);
+        const resultArray = Object.keys(data).map(id => data[id])
         setTodos(resultArray)
       });
 
