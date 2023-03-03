@@ -3,19 +3,34 @@ import { UserDetails } from "./user-details/UserDetails"
 import { UserItem } from "./user-item/UserItem"
 import * as userService from '../../services/userService'
 
+
+const UserAction = {
+    Details: 'details',
+    Edti: 'edit',
+    Delete: 'delete'
+}
+
+
 export const UserList = ({ users }) => {
 
-    const [selectedUser, setSelectedUser] = useState(null)
+    const [userAction, setUserAction] = useState({ user: null, action: null })
 
     const detailsClickHandler = (userId) => {
+        console.log('sadasd');
         userService.getOne(userId)
             .then(user => {
-                setSelectedUser(user)
+                setUserAction({
+                    user,
+                    action: UserAction.Details
+                })
             })
     };
 
     const detailsCloseHandler = () => {
-        setSelectedUser(null)
+        setUserAction({
+            user: null,
+            action: null
+        })
     }
 
     return (
@@ -24,7 +39,11 @@ export const UserList = ({ users }) => {
             {/* Overlap components   */}
 
             {/* OVERLAP COMPONENTS */}
-            {selectedUser && <UserDetails user={selectedUser} onClose={detailsCloseHandler} />}
+            {userAction.action === UserAction.Details &&
+                <UserDetails
+                    user={userAction.user}
+                    onClose={detailsCloseHandler}
+                />}
 
             <table className="table">
                 <thead>
