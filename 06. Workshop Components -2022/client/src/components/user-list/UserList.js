@@ -1,7 +1,6 @@
 import { UserItem } from "./user-item/UserItem"
 
-export const UserList = ({users}) => {
-    console.log('props');
+export const UserList = ({ users }) => {
     return (
         // < !--Table component-- >
         <div className="table-wrapper">
@@ -65,7 +64,10 @@ export const UserList = ({users}) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {users.map(user => <UserItem key={user._id} {...user}/>)}
+                    {users.map(user =>
+                        <tr>
+                            <UserItem key={user._id} {...user} />
+                        </tr>)}
                 </tbody>
             </table>
         </div>
