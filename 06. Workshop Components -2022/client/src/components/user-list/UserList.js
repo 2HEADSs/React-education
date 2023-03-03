@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { UserDetails } from "./user-details/UserDetails"
 import { UserItem } from "./user-item/UserItem"
 import * as userService from '../../services/userService'
@@ -11,9 +11,17 @@ import { UserCreate } from "./user-create/UserCreate";
 
 
 
-export const UserList = ({ users }) => {
+export const UserList = () => {
 
+    const [users, setUsers] = useState([])
     const [userAction, setUserAction] = useState({ user: null, action: null })
+
+    useEffect(() => {
+        userService.getAll()
+            .then(users => setUsers(users))
+
+    }, []);
+
 
     const userActionClickHandler = (userId, actionType) => {
         userService.getOne(userId)
@@ -36,18 +44,34 @@ export const UserList = ({ users }) => {
     const userCreateHandler = (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
+        // const newUser = Object.fromEntries(formData);
+
+
         const {
             firstName,
             lastName,
-            email,
-            phoneNumber,
             imageUrl,
-            country,
-            city,
-            street,
-            streetNumber
-        } = Object.fromEntries(formData);
-        console.log(firstName);
+            phoneNumber,
+            email,
+            ...address } = Object.fromEntries(formData);
+
+        const userData = {
+            firstName,
+            lastName,
+            imageUrl,
+            phoneNumber,
+            email,
+            address
+        }
+
+        console.log(userData);
+
+        userService.create(userData)
+            .then((user) => {
+                console.log(user);
+                setUsers(state => [...state, user])
+                closeHandler();
+            })
     }
 
     return (

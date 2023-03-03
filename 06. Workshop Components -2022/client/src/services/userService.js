@@ -26,7 +26,7 @@ export const create = async (userData) => {
     });
     const result = await response.json();
 
-    console.log(result);
-
     return result
+    //TO DO what user returns
+    // return result.user
 }
