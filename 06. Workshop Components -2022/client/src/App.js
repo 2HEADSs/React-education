@@ -10,7 +10,9 @@ function App() {
 
             <main className="main">
                 <section className="card users-container">
+                    
                     <Search />
+                    
                     <UserSection/>
                 </section>
 
