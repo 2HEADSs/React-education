@@ -1,13 +1,19 @@
+import { UserDetails } from "./user-details/UserDetails"
 import { UserItem } from "./user-item/UserItem"
 
 export const UserList = ({ users }) => {
+
+    const detailsClickHandler = () => {
+        console.log('Clicked');
+    };
+    
     return (
         // < !--Table component-- >
         <div className="table-wrapper">
             {/* Overlap components   */}
 
             {/* OVERLAP COMPONENTS */}
-
+            {/* <UserDetails/> */}
             <table className="table">
                 <thead>
                     <tr>
@@ -65,8 +71,8 @@ export const UserList = ({ users }) => {
                 </thead>
                 <tbody>
                     {users.map(user =>
-                        <tr>
-                            <UserItem key={user._id} {...user} />
+                        <tr key={user._id}>
+                            <UserItem  {...user} onDetailsClick={detailsClickHandler} />
                         </tr>)}
                 </tbody>
             </table>

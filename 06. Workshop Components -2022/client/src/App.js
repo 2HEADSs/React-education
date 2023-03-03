@@ -1,22 +1,22 @@
-import { Header } from "./components/common-components/Header";
-import './App.css'
-import { Footer } from "./components/common-components/Footer";
-import { Search } from "./components/search/Search";
-import { UserList } from "./components/user-list/UserList";
 import { useEffect, useState } from "react";
 
-const baseUrl = 'http://localhost:3005/api';
+import * as userService from './services/userService'
+
+import { Header } from "./components/common-components/Header";
+import { Search } from "./components/search/Search";
+import { UserList } from "./components/user-list/UserList";
+import { Footer } from "./components/common-components/Footer";
+import './App.css'
+
 
 function App() {
 
     const [users, setUsers] = useState([])
 
     useEffect(() => {
-        fetch(`${baseUrl}/users`)
-            .then(res => res.json())
-            .then(result => {
-                setUsers(result.users)
-            })
+        userService.getAll()
+        .then(users => setUsers(users))
+        
     }, []);
 
 
