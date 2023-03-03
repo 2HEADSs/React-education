@@ -14,13 +14,17 @@ export const UserList = ({ users }) => {
             })
     };
 
+    const detailsCloseHandler = () => {
+        setSelectedUser(null)
+    }
+
     return (
         // < !--Table component-- >
         <div className="table-wrapper">
             {/* Overlap components   */}
 
             {/* OVERLAP COMPONENTS */}
-            {selectedUser && <UserDetails user={selectedUser} />}
+            {selectedUser && <UserDetails user={selectedUser} onClose={detailsCloseHandler} />}
 
             <table className="table">
                 <thead>
