@@ -26,7 +26,7 @@ export const create = async (userData) => {
     });
     const result = await response.json();
 
-    return result
+    // return result
     //TO DO what user returns
-    // return result.user
+    return result.user
 }
