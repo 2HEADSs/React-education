@@ -2,7 +2,7 @@ import { Header } from "./components/common-components/Header";
 import './App.css'
 import { Footer } from "./components/common-components/Footer";
 import { Search } from "./components/search/Search";
-import { UserSection } from "./components/user-section/UserSection";
+import { UserList } from "./components/user-list/UserList";
 import { useEffect, useState } from "react";
 
 const baseUrl = 'http://localhost:3005/api';
@@ -18,7 +18,7 @@ function App() {
                 setUsers(result.users)
             })
     }, []);
-    console.log(users);
+
 
     return (
         <div className="App">
@@ -29,7 +29,7 @@ function App() {
 
                     <Search />
 
-                    <UserSection user={users} />
+                    <UserList users={users} />
                 </section>
 
             </main>
