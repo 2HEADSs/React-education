@@ -6,7 +6,7 @@ import * as userService from '../../services/userService'
 
 const UserAction = {
     Details: 'details',
-    Edti: 'edit',
+    Edit: 'edit',
     Delete: 'delete'
 }
 
@@ -16,12 +16,30 @@ export const UserList = ({ users }) => {
     const [userAction, setUserAction] = useState({ user: null, action: null })
 
     const detailsClickHandler = (userId) => {
-        console.log('sadasd');
         userService.getOne(userId)
             .then(user => {
                 setUserAction({
                     user,
                     action: UserAction.Details
+                })
+            })
+    };
+
+    const editClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserAction.Edit
+                })
+            })
+    };
+    const deleteClickHandler = (userId) => {
+        userService.getOne(userId)
+            .then(user => {
+                setUserAction({
+                    user,
+                    action: UserAction.Edit
                 })
             })
     };
