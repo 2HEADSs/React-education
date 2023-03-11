@@ -11,6 +11,7 @@ function App() {
 
     const onUsernameChange = (e)=>{
         console.log(e.target.value);
+        setUsername(e.target.value)
     }
 
     return (
