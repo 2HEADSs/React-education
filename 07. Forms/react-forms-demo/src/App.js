@@ -9,13 +9,24 @@ function App() {
         }, 3000)
     }, [])
 
+    const onUsernameChange = (e) => { 
+        console.log('Change');
+        console.log(e.target.value);
+    }
+
     return (
         <div className="App">
             <header className="App-header">
                 <form action="">
                     <div>
                         <label htmlFor="username">Username</label>
-                        <input type="text" name="username" id="username" defaultValue={username} />
+                        <input
+                            type="text"
+                            name="username"
+                            id="username"
+                            defaultValue={username}
+                            onChange={onUsernameChange}
+                        />
                     </div>
                     <div>
                         <input type="submit" value="Send" />
