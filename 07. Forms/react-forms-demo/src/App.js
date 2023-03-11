@@ -3,7 +3,8 @@ import './App.css';
 
 function App() {
     const [username, setUsername] = useState('Pesho');
-    const [age, setAge] = useState(0);
+    // const [age, setAge] = useState('');
+    const [age, setAge] = useState();
 
 
     useEffect(() => {
@@ -12,11 +13,6 @@ function App() {
         }, 3000)
     }, []);
 
-    useEffect(() => {
-        setTimeout(() => {
-            setAge(31)
-        }, 3000)
-    }, []);
 
 
     const onUsernameChange = (e) => {
@@ -44,13 +40,16 @@ function App() {
                         />
                     </div>
 
+
                     <div>
                         <label htmlFor="age">Age</label>
                         <input
                             type="number"
                             name="age"
                             id="age"
-                            value={age}
+                    //          ??operator works only with null and undefined
+                    // if "age" is null or undefined will show "0"
+                            value={age ?? 0}
                             onChange={onAgeChange}
                         />
                     </div>
