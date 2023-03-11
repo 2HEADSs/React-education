@@ -26,6 +26,8 @@ function App() {
                             id="username"
                             defaultValue={username}
                             onChange={onUsernameChange}
+                            onClick={onUsernameChange}
+                            // onBlur={onUsernameChange}
                         />
                     </div>
                     <div>
