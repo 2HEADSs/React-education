@@ -9,11 +9,25 @@ function App() {
         }, 3000)
     }, [])
 
+    const onUsernameChange = (e) => {
+        console.log('Change');
+        console.log(e.target.value);
+    }
+
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        const formData = new FormData(e.target);
+        // const allData = Object.fromEntries(formData);
+        const username = formData.get('username');
+        console.log(username);
+    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <form>
+                <form onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="username">Username</label>
                         <input
@@ -21,7 +35,9 @@ function App() {
                             name="username"
                             id="username"
                             defaultValue={username}
-
+                            onChange={onUsernameChange}
+                            onClick={onUsernameChange}
+                            onBlur={onUsernameChange}
                         />
                     </div>
                     <div>
