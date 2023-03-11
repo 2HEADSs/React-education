@@ -9,9 +9,12 @@ function App() {
         }, 3000)
     }, [])
 
-    const onUsernameChange = (e) => { 
+    const onUsernameChange = (e) => {
         console.log('Change');
         console.log(e.target.value);
+    }
+
+    const onSubmitClick = (e) => {
     }
 
     return (
@@ -27,11 +30,11 @@ function App() {
                             defaultValue={username}
                             onChange={onUsernameChange}
                             onClick={onUsernameChange}
-                            // onBlur={onUsernameChange}
+                        // onBlur={onUsernameChange}
                         />
                     </div>
                     <div>
-                        <input type="submit" value="Send" />
+                        <input type="submit" value="Send" onClick={onSubmitClick} />
                     </div>
                 </form>
             </header>
