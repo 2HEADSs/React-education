@@ -15,6 +15,8 @@ function App() {
     }
 
     const onSubmitClick = (e) => {
+        e.preventDefault();
+        console.log(e.target.parentElement.previousSibling.children[1].value);
     }
 
     return (
@@ -30,7 +32,7 @@ function App() {
                             defaultValue={username}
                             onChange={onUsernameChange}
                             onClick={onUsernameChange}
-                        // onBlur={onUsernameChange}
+                        onBlur={onUsernameChange}
                         />
                     </div>
                     <div>
