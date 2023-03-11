@@ -14,15 +14,20 @@ function App() {
         console.log(e.target.value);
     }
 
-    const onSubmitClick = (e) => {
+
+    const onSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.parentElement.previousSibling.children[1].value);
+
+        const formData = new FormData(e.target);
+        // const allData = Object.fromEntries(formData);
+        const username = formData.get('username');
+        console.log(username);
     }
 
     return (
         <div className="App">
             <header className="App-header">
-                <form action="">
+                <form onSubmit={onSubmit}>
                     <div>
                         <label htmlFor="username">Username</label>
                         <input
@@ -32,11 +37,11 @@ function App() {
                             defaultValue={username}
                             onChange={onUsernameChange}
                             onClick={onUsernameChange}
-                        onBlur={onUsernameChange}
+                            onBlur={onUsernameChange}
                         />
                     </div>
                     <div>
-                        <input type="submit" value="Send" onClick={onSubmitClick} />
+                        <input type="submit" value="Send" />
                     </div>
                 </form>
             </header>
