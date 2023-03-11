@@ -3,11 +3,11 @@ import './App.css';
 
 function App() {
     const [username, setUsername] = useState('Pesho');
-    useEffect(()=>{
-        setTimeout(()=>{
+    useEffect(() => {
+        setTimeout(() => {
             setUsername('Gosho')
         }, 3000)
-    },[])
+    }, [])
 
     return (
         <div className="App">
