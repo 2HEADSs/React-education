@@ -3,16 +3,31 @@ import './App.css';
 
 function App() {
     const [username, setUsername] = useState('Pesho');
+    const [age, setAge] = useState(0);
+
+
     useEffect(() => {
         setTimeout(() => {
             setUsername('Gosho')
         }, 3000)
-    }, [])
+    }, []);
 
-    const onUsernameChange = (e)=>{
+    useEffect(() => {
+        setTimeout(() => {
+            setAge(31)
+        }, 3000)
+    }, []);
+
+
+    const onUsernameChange = (e) => {
         console.log(e.target.value);
         setUsername(e.target.value)
-    }
+    };
+
+    const onAgeChange = (e) => {
+        console.log(e.target.value);
+        setAge(Number(e.target.value))
+    };
 
     return (
         <div className="App">
@@ -26,6 +41,17 @@ function App() {
                             id="username"
                             value={username}
                             onChange={onUsernameChange}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="age">Age</label>
+                        <input
+                            type="number"
+                            name="age"
+                            id="age"
+                            value={age}
+                            onChange={onAgeChange}
                         />
                     </div>
                     <div>
