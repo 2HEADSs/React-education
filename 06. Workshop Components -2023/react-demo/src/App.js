@@ -13,7 +13,7 @@ function App() {
     const [formValues, setFormValues] = useState({
         firstName: '',
         lastName: ''
-    })
+    });
 
     useEffect(() => {
         userService.getAll()

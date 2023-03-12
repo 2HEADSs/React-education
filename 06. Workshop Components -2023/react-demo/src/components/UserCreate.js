@@ -7,7 +7,7 @@ export const UserCreate = ({
 }) => {
     return (
         <div className="overlay">
-            <div className="backdrop"></div>
+            <div className="backdrop" onClick={onClose}></div>
             <div className="modal">
                 <div className="user-container">
                     <header className="headers">
@@ -27,7 +27,7 @@ export const UserCreate = ({
                                 <label htmlFor="firstName">First name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="firstName" name="firstName" type="text" value={formValues.firstName} onChange={formChangeHandler}/>
+                                    <input id="firstName" name="firstName" type="text" value={formValues.firstName} onChange={formChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     First name should be at least 3 characters long!
@@ -37,7 +37,7 @@ export const UserCreate = ({
                                 <label htmlFor="lastName">Last name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="lastName" name="lastName" type="text" value={formValues.firstName} onChange={formChangeHandler} />
+                                    <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} />
                                 </div>
                                 <p className="form-error">
                                     Last name should be at least 3 characters long!

@@ -65,9 +65,26 @@ export const UserList = ({
 
     return (
         <>
-            {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
-            {showAddUser && <UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
-            {showDeleteUser && <UserDelete onClose={onClose} onDelete={onDeleteHandler} />}
+            {selectedUser &&
+                <UserDetails
+                    {...selectedUser}
+                    onClose={onClose}
+                />
+            }
+            {showAddUser &&
+                <UserCreate
+                    onClose={onClose}
+                    onUserCreateSubmit={onUserCreateSubmitHandler}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                />
+            }
+            {showDeleteUser &&
+                <UserDelete
+                    onClose={onClose}
+                    onDelete={onDeleteHandler}
+                />
+            }
             {showEditUser &&
                 <UserCreate
                     user={showEditUser}
