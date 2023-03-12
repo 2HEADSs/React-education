@@ -1,14 +1,7 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import './App.css';
 
 function App() {
-    const [username, setUsername] = useState('Pesho');
-    // const [age, setAge] = useState('');
-    const [age, setAge] = useState();
-    const [creditCard, setCreditCard] = useState('');
-    const [occupation, setOccupation] = useState('engineering');
-    const [gender, setGender] = useState('male');
-    const [bio, setBio] = useState('');
     const [hobbies, setHobbies] = useState({
         "hiking": false,
         "reading": false,
@@ -17,48 +10,21 @@ function App() {
         "coding": false
     });
 
+    const [values, setValues] = useState({
+        username: 'Pesho',
+        creditCard: '',
+        occupation: 'engineering',
+        gender: 'male',
+        bio: '',
+        age: ''
+    })
 
-    useEffect(() => {
-        setTimeout(() => {
-            setUsername('Gosho')
-        }, 3000)
-    }, []);
-
-
-
-    const onUsernameChange = (e) => {
-        // console.log(e.target.value);
-        setUsername(e.target.value)
+    const onChangeHandler = (e) => {
+        setValues(state => ({ ...state, [e.target.name]: e.target.value }))
     };
 
-    const onAgeChange = (e) => {
-        // console.log(e.target.value);
-        setAge(Number(e.target.value))
-    };
-
-    const onCreditCardChange = (e) => {
-        // console.log(e.target.value);
-        setCreditCard(e.target.value)
-    };
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        console.log(username);
-        console.log(age);
-        console.log(creditCard);
-    };
-
-    const onOccupationSelect = (e) => {
-        console.log(e.target.value);
-        setOccupation(e.target.value)
-    };
-
-    const onGenderChange = (e) => {
-        setGender(e.target.value)
-    };
-
-
-    const onBioChange = (e) => {
-        setBio(e.target.value)
     };
 
     const onHobbiesChange = (e) => {
@@ -78,8 +44,8 @@ function App() {
                             type="text"
                             name="username"
                             id="username"
-                            value={username}
-                            onChange={onUsernameChange}
+                            value={values.username}
+                            onChange={onChangeHandler}
                         />
                     </div>
 
@@ -92,28 +58,28 @@ function App() {
                             id="age"
                             //          ??operator works only with null and undefined
                             // if "age" is null or undefined will show "0"
-                            value={age ?? ''}
-                            onChange={onAgeChange}
+                            value={values.age}
+                            onChange={onChangeHandler}
                         />
                     </div>
 
 
-                    {age >= 18 && (
+                    {Number(values.age) >= 18 && (
                         <div>
                             <label htmlFor="credit-cards">Credit Cards</label>
                             <input
                                 type="text"
                                 name="creditCard"
                                 id="credit-cards"
-                                value={creditCard}
-                                onChange={onCreditCardChange}
+                                value={values.creditCard}
+                                onChange={onChangeHandler}
                             />
                         </div>
                     )}
 
                     <div>
                         <label htmlFor="occupation">Occupation</label>
-                        <select name="occupation" id="occupation" value={occupation} onChange={onOccupationSelect}>
+                        <select name="occupation" id="occupation" value={values.occupation} onChange={onChangeHandler}>
                             <option value="it">IT</option>
                             <option value="engineering">Engineering</option>
                             <option value="medicine">Medicine</option>
@@ -122,27 +88,27 @@ function App() {
 
                     <div>
                         <label htmlFor="male">Male</label>
-                        <input type="radio" name="gender" id="male" value="male" onChange={onGenderChange} checked={gender == 'male'} />
+                        <input type="radio" name="gender" id="male" value="male" onChange={onChangeHandler} checked={values.gender === 'male'} />
                         <label htmlFor="female">Female</label>
-                        <input type="radio" name="gender" id="female" value="female" onChange={onGenderChange} checked={gender == 'female'} />
+                        <input type="radio" name="gender" id="female" value="female" onChange={onChangeHandler} checked={values.gender === 'female'} />
                     </div>
 
                     <div>
                         <label htmlFor="bio">Bio</label>
-                        <textarea name="bio" id="bio" cols="30" rows="3" value={bio} onChange={onBioChange}></textarea>
+                        <textarea name="bio" id="bio" cols="30" rows="3" value={values.bio} onChange={onChangeHandler}></textarea>
                     </div>
 
                     <div>
                         <label htmlFor="hiking">Hiking</label>
-                        <input type="checkbox" name="hobbies" id="hiking" value="hiking" onChange={onHobbiesChange} checked={hobbies['hiking']}/>
+                        <input type="checkbox" name="hobbies" id="hiking" value="hiking" onChange={onHobbiesChange} checked={hobbies['hiking']} />
                         <label htmlFor="reading">Reading</label>
-                        <input type="checkbox" name="hobbies" id="reading" value="reading" onChange={onHobbiesChange} checked={hobbies['reading']}/>
+                        <input type="checkbox" name="hobbies" id="reading" value="reading" onChange={onHobbiesChange} checked={hobbies['reading']} />
                         <label htmlFor="sports">Sports</label>
-                        <input type="checkbox" name="hobbies" id="sports" value="sports" onChange={onHobbiesChange} checked={hobbies['sports']}/>
+                        <input type="checkbox" name="hobbies" id="sports" value="sports" onChange={onHobbiesChange} checked={hobbies['sports']} />
                         <label htmlFor="gaming">Gaming</label>
-                        <input type="checkbox" name="hobbies" id="gaming" value="gaming" onChange={onHobbiesChange} checked={hobbies['gaming']}/>
+                        <input type="checkbox" name="hobbies" id="gaming" value="gaming" onChange={onHobbiesChange} checked={hobbies['gaming']} />
                         <label htmlFor="coding">Coding</label>
-                        <input type="checkbox" name="hobbies" id="coding" value="coding" onChange={onHobbiesChange} checked={hobbies['coding']}/>
+                        <input type="checkbox" name="hobbies" id="coding" value="coding" onChange={onHobbiesChange} checked={hobbies['coding']} />
                     </div>
 
 
