@@ -5,6 +5,7 @@ function App() {
     const [username, setUsername] = useState('Pesho');
     // const [age, setAge] = useState('');
     const [age, setAge] = useState();
+    const [creditCard, setCreditCard] = useState();
 
 
     useEffect(() => {
@@ -16,13 +17,18 @@ function App() {
 
 
     const onUsernameChange = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setUsername(e.target.value)
     };
 
     const onAgeChange = (e) => {
-        console.log(e.target.value);
+        // console.log(e.target.value);
         setAge(Number(e.target.value))
+    };
+
+    const onCreditCardChange = (e) => {
+        // console.log(e.target.value);
+        setCreditCard(e.target.value) 
     };
 
     return (
@@ -47,12 +53,27 @@ function App() {
                             type="number"
                             name="age"
                             id="age"
-                    //          ??operator works only with null and undefined
-                    // if "age" is null or undefined will show "0"
-                            value={age ?? 0}
+                            //          ??operator works only with null and undefined
+                            // if "age" is null or undefined will show "0"
+                            value={age ?? ''}
                             onChange={onAgeChange}
                         />
                     </div>
+
+
+                    {age >= 18 && (
+                        <div>
+                            <label htmlFor="credit-cards">Credit Cards</label>
+                            <input
+                                type="text"
+                                name="creditCard"
+                                id="credit-cards"
+                                value={creditCard}
+                                onChange={onCreditCardChange}
+                            />
+                        </div>
+                    )}
+
                     <div>
                         <input type="submit" value="Send" />
                     </div>
