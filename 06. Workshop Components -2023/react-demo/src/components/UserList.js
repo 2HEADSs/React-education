@@ -12,6 +12,8 @@ export const UserList = ({
     onUserCreateSubmit,
     onUserDelete,
     onUserUpdateSubmit,
+    formValues,
+    formChangeHandler
 }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showDeleteUser, setShowDeleteUser] = useState(null);
@@ -57,7 +59,7 @@ export const UserList = ({
 
     const onEditClick = async (userId) => {
         const user = await userService.getOne(userId);
-        
+
         setShowEditUser(user);
     };
 
@@ -66,7 +68,15 @@ export const UserList = ({
             {selectedUser && <UserDetails {...selectedUser} onClose={onClose} />}
             {showAddUser && <UserCreate onClose={onClose} onUserCreateSubmit={onUserCreateSubmitHandler} />}
             {showDeleteUser && <UserDelete onClose={onClose} onDelete={onDeleteHandler} />}
-            {showEditUser && <UserCreate user={showEditUser} onClose={onClose} onUserCreateSubmit={onUserUpdateSubmitHandler} />}
+            {showEditUser &&
+                <UserCreate
+                    user={showEditUser}
+                    onClose={onClose}
+                    onUserCreateSubmit={onUserUpdateSubmitHandler}
+                    formValues={formValues}
+                    formChangeHandler={formChangeHandler}
+                />
+            }
             <div className="table-wrapper">
                 {/* <div className="loading-shade">
                 <div className="spinner"></div>
