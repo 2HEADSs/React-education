@@ -6,6 +6,9 @@ function App() {
     // const [age, setAge] = useState('');
     const [age, setAge] = useState();
     const [creditCard, setCreditCard] = useState('');
+    const [occupation, setOccupation] = useState('engineering');
+    const [gender, setGender] = useState('male');
+    const [bio, setBio] = useState('');
 
 
     useEffect(() => {
@@ -28,13 +31,27 @@ function App() {
 
     const onCreditCardChange = (e) => {
         // console.log(e.target.value);
-        setCreditCard(e.target.value) 
+        setCreditCard(e.target.value)
     };
-    const onSubmitHandler = (e)=>{
+    const onSubmitHandler = (e) => {
         e.preventDefault();
         console.log(username);
         console.log(age);
         console.log(creditCard);
+    };
+
+    const onOccupationSelect = (e) => {
+        console.log(e.target.value);
+        setOccupation(e.target.value)
+    };
+
+    const onGenderChange = (e) => {
+        setGender(e.target.value)
+    };
+
+
+    const onBioChange = (e) => {
+        setBio(e.target.value)
     }
 
     return (
@@ -81,7 +98,27 @@ function App() {
                     )}
 
                     <div>
-                        <input type="submit" value="Send" onClick={onSubmitHandler}/>
+                        <label htmlFor="occupation">Occupation</label>
+                        <select name="occupation" id="occupation" value={occupation} onChange={onOccupationSelect}>
+                            <option value="it">IT</option>
+                            <option value="engineering">Engineering</option>
+                            <option value="medicine">Medicine</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label htmlFor="male">Male</label>
+                        <input type="radio" name="gender" id="male" value="male" onChange={onGenderChange} checked={gender == 'male'} />
+                        <label htmlFor="female">Female</label>
+                        <input type="radio" name="gender" id="female" value="female" onChange={onGenderChange} checked={gender == 'female'} />
+                    </div>
+                    <div>
+                        <label htmlFor="bio">Bio</label>
+                        <textarea name="bio" id="bio" cols="30" rows="3" value={bio} onChange={onBioChange}></textarea>
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Send" onClick={onSubmitHandler} />
                         {/* <input type="button" value="Send" onClick={onSubmitHandler}/> */}
                         {/* <button type="button"  onClick={onSubmitHandler}>Send</button> */}
                     </div>
