@@ -64,26 +64,29 @@ function App() {
     };
 
     const formChangeHandler = (e) => {
-        const value = e.target.value;
-        if (e.target.name === "firstName" && value.length < 3 || value.length > 20) {
-            setFormErrors(state => ({ ...state, firstName: 'First name should be between 3 and 20 characters!' }))
-        }
-
-        if (e.target.name === "lastName" && value.length < 3 || value.length > 20) {
-            setFormErrors(state => ({ ...state, lastName: 'last name should be between 3 and 20 characters!' }))
-        }
-
         setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
+    };
+
+    const formValidate = (e) => {
+        const value = e.target.value;
+        let errors = {}
+        if (e.target.name === "firstName" && (value.length < 3 || value.length > 20)) {
+            errors.firstName = 'First name should be between 3 and 20 characters!'
+        }
+
+        if (e.target.name === "lastName" && (value.length < 3 || value.length > 20)) {
+            errors.lastName = 'Last name should be between 3 and 20 characters!'
+        }
+
+        setFormErrors(errors)
     }
 
     return (
         <>
             <Header />
-
             <main className="main">
                 <section className="card users-container">
                     <Search />
-
                     <UserList
                         users={users}
                         onUserCreateSubmit={onUserCreateSubmit}
@@ -92,10 +95,10 @@ function App() {
                         formValues={formValues}
                         formChangeHandler={formChangeHandler}
                         formErrors={formErrors}
+                        formValidate={formValidate}
                     />
                 </section>
             </main>
-
             <Footer />
         </>
     );

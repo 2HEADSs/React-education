@@ -14,7 +14,8 @@ export const UserList = ({
     onUserUpdateSubmit,
     formValues,
     formChangeHandler,
-    formErrors
+    formErrors,
+    formValidate
 }) => {
     const [selectedUser, setSelectedUser] = useState(null);
     const [showDeleteUser, setShowDeleteUser] = useState(null);
@@ -79,6 +80,7 @@ export const UserList = ({
                     formValues={formValues}
                     formChangeHandler={formChangeHandler}
                     formErrors={formErrors}
+                    formValidate={formValidate}
                 />
             }
             {showDeleteUser &&
@@ -95,6 +97,7 @@ export const UserList = ({
                     formValues={formValues}
                     formChangeHandler={formChangeHandler}
                     formErrors={formErrors}
+                    formValidate={formValidate}
                 />
             }
             <div className="table-wrapper">
