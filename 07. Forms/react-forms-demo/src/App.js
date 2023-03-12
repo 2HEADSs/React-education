@@ -5,7 +5,7 @@ function App() {
     const [username, setUsername] = useState('Pesho');
     // const [age, setAge] = useState('');
     const [age, setAge] = useState();
-    const [creditCard, setCreditCard] = useState();
+    const [creditCard, setCreditCard] = useState('');
 
 
     useEffect(() => {
@@ -30,11 +30,17 @@ function App() {
         // console.log(e.target.value);
         setCreditCard(e.target.value) 
     };
+    const onSubmitHandler = (e)=>{
+        e.preventDefault();
+        console.log(username);
+        console.log(age);
+        console.log(creditCard);
+    }
 
     return (
         <div className="App">
             <header className="App-header">
-                <form>
+                <form onSubmit={onSubmitHandler} >
                     <div>
                         <label htmlFor="username">Username</label>
                         <input
@@ -75,7 +81,9 @@ function App() {
                     )}
 
                     <div>
-                        <input type="submit" value="Send" />
+                        <input type="submit" value="Send" onClick={onSubmitHandler}/>
+                        {/* <input type="button" value="Send" onClick={onSubmitHandler}/> */}
+                        {/* <button type="button"  onClick={onSubmitHandler}>Send</button> */}
                     </div>
                 </form>
             </header>
