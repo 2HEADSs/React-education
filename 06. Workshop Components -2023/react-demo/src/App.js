@@ -15,6 +15,11 @@ function App() {
         lastName: ''
     });
 
+    const [formErrors, setFormErrors] = useState({
+        firstName: '',
+        lastName: ''
+    });
+
     useEffect(() => {
         userService.getAll()
             .then(setUsers)
@@ -22,6 +27,7 @@ function App() {
                 console.log('Error' + err);
             });
     }, []);
+
 
     const onUserCreateSubmit = async (e) => {
         // stop automatic form submit
@@ -58,7 +64,16 @@ function App() {
     };
 
     const formChangeHandler = (e) => {
-        setFormValues(state => ({...state,[e.target.name]: e.target.value}))
+        const value = e.target.value;
+        if (e.target.name === "firstName" && value.length < 3 || value.length > 20) {
+            setFormErrors(state => ({ ...state, firstName: 'First name should be between 3 and 20 characters!' }))
+        }
+
+        if (e.target.name === "lastName" && value.length < 3 || value.length > 20) {
+            setFormErrors(state => ({ ...state, lastName: 'last name should be between 3 and 20 characters!' }))
+        }
+
+        setFormValues(state => ({ ...state, [e.target.name]: e.target.value }))
     }
 
     return (
@@ -76,6 +91,7 @@ function App() {
                         onUserDelete={onUserDelete}
                         formValues={formValues}
                         formChangeHandler={formChangeHandler}
+                        formErrors={formErrors}
                     />
                 </section>
             </main>

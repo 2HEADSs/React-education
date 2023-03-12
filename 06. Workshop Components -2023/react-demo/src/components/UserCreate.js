@@ -3,7 +3,8 @@ export const UserCreate = ({
     onClose,
     onUserCreateSubmit,
     formValues,
-    formChangeHandler
+    formChangeHandler,
+    formErrors
 }) => {
     return (
         <div className="overlay">
@@ -29,9 +30,11 @@ export const UserCreate = ({
                                     <span><i className="fa-solid fa-user"></i></span>
                                     <input id="firstName" name="firstName" type="text" value={formValues.firstName} onChange={formChangeHandler} />
                                 </div>
-                                <p className="form-error">
-                                    First name should be at least 3 characters long!
-                                </p>
+                                {formErrors.firstName &&
+                                    <p className="form-error">
+                                        {formErrors.firstName}
+                                    </p>
+                                }
                             </div>
                             <div className="form-group">
                                 <label htmlFor="lastName">Last name</label>
@@ -39,9 +42,12 @@ export const UserCreate = ({
                                     <span><i className="fa-solid fa-user"></i></span>
                                     <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} />
                                 </div>
-                                <p className="form-error">
-                                    Last name should be at least 3 characters long!
-                                </p>
+                                {formErrors.lastName &&
+                                    <p className="form-error">
+                                        {formErrors.lastName}
+                                    </p>
+                                }
+
                             </div>
                         </div>
 
