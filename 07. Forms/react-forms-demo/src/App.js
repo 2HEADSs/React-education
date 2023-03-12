@@ -9,7 +9,6 @@ function App() {
         "gaming": false,
         "coding": false
     });
-    const 
 
     const [values, setValues] = useState({
         username: 'Pesho',
@@ -18,7 +17,7 @@ function App() {
         gender: 'male',
         bio: '',
         age: ''
-    })
+    });
 
     const onChangeHandler = (e) => {
         setValues(state => ({ ...state, [e.target.name]: e.target.value }))
