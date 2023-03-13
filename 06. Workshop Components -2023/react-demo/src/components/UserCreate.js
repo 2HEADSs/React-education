@@ -25,11 +25,21 @@ export const UserCreate = ({
                     </header>
                     <form onSubmit={(e) => onUserCreateSubmit(e, user?._id)}>
                         <div className="form-row">
-                            <div className="form-group">
+                            <div className="form-group" 
+                            >
                                 <label htmlFor="firstName">First name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="firstName" name="firstName" type="text" value={formValues.firstName} onChange={formChangeHandler} onBlur={formValidate}/>
+                                    <input
+                                        id="firstName"
+                                        name="firstName"
+                                        type="text"
+                                        value={formValues.firstName}
+                                        onChange={formChangeHandler}
+                                        onBlur={formValidate}
+                                        style={formErrors.firstName ? { borderColor: "red" } : {}}
+
+                                    />
                                 </div>
                                 {formErrors.firstName &&
                                     <p className="form-error">
@@ -41,7 +51,7 @@ export const UserCreate = ({
                                 <label htmlFor="lastName">Last name</label>
                                 <div className="input-wrapper">
                                     <span><i className="fa-solid fa-user"></i></span>
-                                    <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} onBlur={formValidate}/>
+                                    <input id="lastName" name="lastName" type="text" value={formValues.lastName} onChange={formChangeHandler} onBlur={formValidate} />
                                 </div>
                                 {formErrors.lastName &&
                                     <p className="form-error">
@@ -133,8 +143,8 @@ export const UserCreate = ({
                         </div>
                     </form>
                 </div>
-            </div>
-        </div>
+            </div >
+        </div >
     );
 };
 
