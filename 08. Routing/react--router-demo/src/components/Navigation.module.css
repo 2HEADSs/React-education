@@ -1,10 +1,15 @@
-.navigation ul li{
+.navigation ul li * {
     list-style: none;
     color: white;
-    display: inline;
     margin-left: 20px;
+    text-decoration: none;
 }
 
-.navigation ul li:hover{
+.navigation ul li {
+    display: inline;
+    list-style: none;
+}
+
+.navigation ul li:hover {
     text-decoration: underline;
 }
