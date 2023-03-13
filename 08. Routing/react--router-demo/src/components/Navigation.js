@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import styles from './Navigation.module.css'
 
 export const Navigation = () => {
@@ -6,9 +6,9 @@ export const Navigation = () => {
         <nav className={styles.navigation}>
             <ul>
                 <li><Link to='/'>Home</Link></li>
-                <li><Link to='/about' >About</Link></li>
-                <li><Link to='/characters' >Character</Link></li>
-                <li></li>
+                {/* <li><NavLink style={({ isActive }) => ({ color: isActive ? 'purple' : 'white'})} to='/about' >About</NavLink></li> */}
+                <li><NavLink className={({ isActive }) => isActive ? styles['nav-active'] : ''} to='/about' >About</NavLink></li>
+                <li><Link to='/characters' >Characters</Link></li>
             </ul>
         </nav>
     )

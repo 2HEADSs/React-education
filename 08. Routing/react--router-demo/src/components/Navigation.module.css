@@ -13,3 +13,7 @@
 .navigation ul li:hover {
     text-decoration: underline;
 }
+
+.nav-active{
+    color: purple;
+}
