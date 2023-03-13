@@ -1,4 +1,10 @@
 .navigation ul li{
     list-style: none;
     color: white;
+    display: inline;
+    margin-left: 20px;
+}
+
+.navigation ul li:hover{
+    text-decoration: underline;
 }
