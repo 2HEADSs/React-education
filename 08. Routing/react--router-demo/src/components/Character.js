@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 
 const baseUrl = 'https://swapi.dev/api/people';
 
@@ -16,7 +16,7 @@ export const Character = () => {
             })
     }, [characterId])
 
-    const onBackButtonClick = () => { 
+    const onBackButtonClick = () => {
         // navigate(-1)
         navigate('/characters')
     }
@@ -26,6 +26,16 @@ export const Character = () => {
             <h1>Character Page</h1>
             <h2>{character.name}</h2>
             <button onClick={onBackButtonClick}>Back</button>
+
+            <nav>
+                {/* <Link to="/films">Films</Link> */}
+                {/* not absolute path - relative paths */}
+                <Link to="films">Films</Link>
+                <br />
+                <Link to="vehicles">Vehicles</Link>
+                <br />
+                <Link to="starships">Starships</Link>
+            </nav>
 
         </>
     );
