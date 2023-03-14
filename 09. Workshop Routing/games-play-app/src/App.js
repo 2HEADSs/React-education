@@ -24,8 +24,11 @@ function App() {
             })
     }, []);
 
-    const onCreateGameSubmit = (data) => {
+    const onCreateGameSubmit = async (data) => {
         console.log(data);
+        const newGame = gameService.create(data);
+
+        
     }
 
 
