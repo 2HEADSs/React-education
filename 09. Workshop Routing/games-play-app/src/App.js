@@ -1,4 +1,7 @@
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+
+import * as gameService from './services/gameService';
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { CreateGame } from "./components/CreateGame/CreateGame";
@@ -11,6 +14,17 @@ import { Register } from "./components/Register/Register";
 
 
 function App() {
+
+    const [games, setGames] = useState([]);
+
+    useEffect(() => {
+        gameService.getAll()
+            .then(result => {
+                setGames(result)
+            })
+    }, [])
+
+
     return (
         <div id="box">
             <Header />
@@ -21,7 +35,7 @@ function App() {
                     <Route path='/login' element={<Login />} />
                     <Route path='/register' element={<Register />} />
                     <Route path='/create-game' element={<CreateGame />} />
-                    <Route path='/catalog' element={<Catalog />} />
+                    <Route path='/catalog' element={<Catalog games={games} />} />
 
                 </Routes>
             </main>
