@@ -26,9 +26,7 @@ function App() {
 
     const onCreateGameSubmit = async (data) => {
         console.log(data);
-        const newGame = gameService.create(data);
-
-        
+        const newGame = await gameService.create(data);
     }
 
 

@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useState } from "react";
 
 export const CreateGame = ({
     onCreateGameSubmit,
@@ -18,7 +18,7 @@ export const CreateGame = ({
 
     const onSubmit = (e) => {
         e.preventDefault()
-        onCreateGameSubmit()
+        onCreateGameSubmit(values);
     }
 
     return (
