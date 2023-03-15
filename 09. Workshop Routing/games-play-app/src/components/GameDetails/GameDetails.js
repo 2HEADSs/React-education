@@ -10,7 +10,6 @@ export const GameDetails = () => {
         gameServices.getOne(gameId)
             .then(result => {
                 setGame(result);
-                console.log(game);
             });
     }, [gameId]);
 
