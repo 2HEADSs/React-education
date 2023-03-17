@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { TodoContext } from './contexts/todoContext';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -50,12 +51,19 @@ function App() {
 
     }
 
+    const contextValue = {
+        onTodoDeleteClick
+    }
+
     return (
-        <div>
-            <Header />
-            <TodoList todos={todos} onTodoAddClick={onTodoAddClick} onTodoDeleteClick={onTodoDeleteClick} />
-            <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
-        </div>
+        <TodoContext.Provider value={contextValue}>
+
+            <div>
+                <Header />
+                <TodoList todos={todos} onTodoAddClick={onTodoAddClick}/>
+                <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
+            </div>
+        </TodoContext.Provider>
     );
 }
 
