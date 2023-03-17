@@ -6,15 +6,11 @@ import { useState } from 'react';
 import { useForm } from '../hooks/useForm'
 
 
-export const AddTodoModal = () => {
-    const { formValues, onChangeHandler, onSubmit } = useForm({
-        text: '',
-    }, (values) => {
-        console.log(values);
-    });
+export const AddTodoModal = ({show, onTodoAddSubmit }) => {
+    const { formValues, onChangeHandler, onSubmit } = useForm({ text: '', }, onTodoAddSubmit);
 
     return (
-        <Modal show={true}>
+        <Modal show={show}>
             <Modal.Header closeButton>
                 <Modal.Title>Add Todo</Modal.Title>
             </Modal.Header>
