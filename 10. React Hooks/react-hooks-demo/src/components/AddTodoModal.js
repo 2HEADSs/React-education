@@ -6,12 +6,12 @@ import { useState } from 'react';
 import { useForm } from '../hooks/useForm'
 
 
-export const AddTodoModal = ({show, onTodoAddSubmit }) => {
+export const AddTodoModal = ({ show, onTodoAddSubmit, onTodoAddClose }) => {
     const { formValues, onChangeHandler, onSubmit } = useForm({ text: '', }, onTodoAddSubmit);
 
     return (
-        <Modal show={show}>
-            <Modal.Header closeButton>
+        <Modal show={show} onEscapeKeyDown={onTodoAddClose}>
+            <Modal.Header closeButton onHide={onTodoAddClose}>
                 <Modal.Title>Add Todo</Modal.Title>
             </Modal.Header>
 
@@ -26,7 +26,7 @@ export const AddTodoModal = ({show, onTodoAddSubmit }) => {
                         Submit
                     </Button>
 
-                    <Button variant="secondary">Close</Button>
+                    <Button variant="secondary" onClick={onTodoAddClose}>Close</Button>
                 </Form>
             </Modal.Body>
         </Modal >
