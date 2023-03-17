@@ -35,6 +35,8 @@ function App() {
         setTodos(state => [...state, result])
     };
 
+
+
     const onTodoAddClick = () => {
         setshowAddTodo(true)
     };
@@ -48,11 +50,25 @@ function App() {
 
         //must check if response is OK?
         setTodos(state => state.filter(x => x._id !== todoId))
+    }
 
+    const onTodoClick = async (todoId) => {
+        const todo = todos.find(x => x._id === todoId)
+        await fetch(`${baseUrl}/${todoId}`, {
+            method: 'PUT',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ ...todo, isCompleted: !todo.isCompleted })
+        });
+
+        //must check if response is OK?
+        setTodos(state => state.map(x => x._id === todoId ? { ...x, isCompleted: !x.isCompleted } : x))
     }
 
     const contextValue = {
-        onTodoDeleteClick
+        onTodoDeleteClick,
+        onTodoClick
     }
 
     return (
@@ -60,7 +76,7 @@ function App() {
 
             <div>
                 <Header />
-                <TodoList todos={todos} onTodoAddClick={onTodoAddClick}/>
+                <TodoList todos={todos} onTodoAddClick={onTodoAddClick} />
                 <AddTodoModal show={showAddTodo} onTodoAddSubmit={onTodoAddSubmit} onTodoAddClose={onTodoAddClose} />
             </div>
         </TodoContext.Provider>
