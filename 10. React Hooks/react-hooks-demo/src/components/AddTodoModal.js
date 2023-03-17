@@ -3,6 +3,10 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 
 export const AddTodoModal = () => {
+    const onTodoSubmit = (e) => { 
+        e.preventDefault();
+        console.log('eeee');
+    }
     return (
         <Modal show={true}>
             <Modal.Header closeButton>
@@ -10,10 +14,10 @@ export const AddTodoModal = () => {
             </Modal.Header>
 
             <Modal.Body>
-                <Form>
+                <Form onSubmit={onTodoSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Todo</Form.Label>
-                        <Form.Control type="email" placeholder="Do the dishes" />
+                        <Form.Control type="text" placeholder="Do the dishes" />
                     </Form.Group>
                     <Button variant="primary" type="submit">
                         Submit
@@ -23,8 +27,8 @@ export const AddTodoModal = () => {
 
             <Modal.Footer>
                 <Button variant="secondary">Close</Button>
-                <Button variant="primary">Add</Button>
+
             </Modal.Footer>
-        </Modal>
+        </Modal >
     )
 }
