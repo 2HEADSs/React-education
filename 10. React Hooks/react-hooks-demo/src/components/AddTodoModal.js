@@ -3,17 +3,16 @@ import Modal from 'react-bootstrap/Modal';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
 
+import { useForm } from '../hooks/useForm'
+
+
 export const AddTodoModal = () => {
-    const [formValues, setFormValues] = useState({
+    const { formValues, onChangeHandler, onSubmit } = useForm({
         text: '',
-    })
-    const onChangeHandler = (e) => {
-        setFormValues(state => ({...state, [e.target.name]: e.target.value}))
-    }
-    const onTodoSubmit = (e) => {
-        e.preventDefault();
-        console.log(formValues);
-    }
+    }, (values) => {
+        console.log(values);
+    });
+
     return (
         <Modal show={true}>
             <Modal.Header closeButton>
@@ -21,11 +20,11 @@ export const AddTodoModal = () => {
             </Modal.Header>
 
             <Modal.Body>
-                <Form onSubmit={onTodoSubmit}>
+                <Form onSubmit={onSubmit}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <Form.Label>Todo</Form.Label>
                         <Form.Control type="text" name="text" placeholder="Do the dishes"
-                        value={formValues.name} onChange={onChangeHandler}/>
+                            value={formValues.name} onChange={onChangeHandler} />
                     </Form.Group>
                     <Button variant="primary" type="submit" style={{ marginRight: '10px' }}>
                         Submit
