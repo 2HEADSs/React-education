@@ -41,7 +41,7 @@ function App() {
 
 
     return (
-        <AuthContext.Provider>
+        <AuthContext.Provider value={{onLoginSubmit}}>
 
             <div id="box">
                 <Header />
