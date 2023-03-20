@@ -1,8 +1,11 @@
+import { useContext } from "react"
+import { AuthContext } from "../../contexts/AuthContext"
+
 export const Login = () => {
+    const { onLoginSubmit } = useContext(AuthContext)
     return (
         <section id="login-page" className="auth">
-            <form id="login">
-
+            <form id="login" onSubmit={onLoginSubmit}>
                 <div className="container">
                     <div className="brand-logo"></div>
                     <h1>Login</h1>

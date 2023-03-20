@@ -2,7 +2,7 @@ import { useNavigate, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
 import * as gameService from './services/gameService';
-import { AuthContext } from './components/contexts/AuthContext';
+import { AuthContext } from './contexts/AuthContext';
 
 import { Catalog } from "./components/Catalog/Catalog";
 import { CreateGame } from "./components/CreateGame/CreateGame";
@@ -35,13 +35,13 @@ function App() {
         navigate('/catalog')
     };
 
-    const onLoginSubmit = async (data) => {
-        console.log(data);
+    const onLoginSubmit = async (e) => {
+        e.preventDefault();
     }
 
 
     return (
-        <AuthContext.Provider value={{onLoginSubmit}}>
+        <AuthContext.Provider value={{ onLoginSubmit }}>
 
             <div id="box">
                 <Header />
