@@ -30,7 +30,6 @@ function App() {
     }, []);
 
     const onCreateGameSubmit = async (data) => {
-        console.log(data);
         const newGame = await gameService.create(data);
         setGames(state => [...state, newGame]);
         navigate('/catalog')
@@ -40,7 +39,8 @@ function App() {
         try {
             const result = await authService.login(data);
             console.log(result);
-            setAuth(result)
+            setAuth(result);
+            navigate('/catalog')
         } catch (error) {
             console.log('There is a problem');
         }
