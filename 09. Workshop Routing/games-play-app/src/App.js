@@ -68,9 +68,7 @@ function App() {
     };
 
     const onLogout = async () => {
-        //TODO :AUTHORIZED REQUEST
-        // await authService.logout();
-
+        await authService.logout();
         setAuth({});
     }
 
