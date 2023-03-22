@@ -14,7 +14,6 @@ import { Logout } from './components/Logout/Logout';
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { GameDetails } from './components/GameDetails/GameDetails';
-import { useService } from './hooks/useService';
 
 
 
@@ -22,8 +21,8 @@ function App() {
     const navigate = useNavigate()
     const [games, setGames] = useState([]);
     const [auth, setAuth] = useState({});
-    const gameService = useService(gameServiceFactory)
-    const authService = useService(authServiceFactory)
+    const gameService = gameServiceFactory(auth.accessToken)
+    const authService = authServiceFactory(auth.accessToken)
 
 
     useEffect(() => {
@@ -47,6 +46,7 @@ function App() {
             setAuth(result);
             navigate('/catalog');
         } catch (error) {
+            console.log(error);
             console.log('There is a problem with login');
         }
     };
