@@ -19,7 +19,7 @@ import { GameDetails } from './components/GameDetails/GameDetails';
 function App() {
     const navigate = useNavigate()
     const [games, setGames] = useState([]);
-    const [auth, setAuth] = useState([])
+    const [auth, setAuth] = useState({})
 
 
     useEffect(() => {
@@ -44,11 +44,19 @@ function App() {
         } catch (error) {
             console.log('There is a problem');
         }
+    };
+
+    const contenxt = {
+        onLoginSubmit,
+        userId: auth._id,
+        token: auth.accessToken,
+        userEmail: auth.email,
+        isAuthenticated: !!auth.accessToken
     }
 
 
     return (
-        <AuthContext.Provider value={{ onLoginSubmit }}>
+        <AuthContext.Provider value={contenxt}>
 
             <div id="box">
                 <Header />
