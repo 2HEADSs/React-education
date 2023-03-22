@@ -51,9 +51,9 @@ function App() {
         if (confirmPassword !== registerData.password) {
             return;
         }
-        
+
         try {
-            const result = await authService.register(values);
+            const result = await authService.register(registerData);
             setAuth(result);
             navigate('/catalog');
         } catch (error) {
