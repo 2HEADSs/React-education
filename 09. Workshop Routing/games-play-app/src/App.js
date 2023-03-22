@@ -1,8 +1,8 @@
 import { useNavigate, Route, Routes } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
-import * as gameService from './services/gameService';
-import * as authService from './services/authService'
+import { gameServiceFactory } from './services/gameService';
+import { authServiceFactory } from './services/authService'
 import { AuthContext } from './contexts/AuthContext';
 
 import { Catalog } from "./components/Catalog/Catalog";
@@ -14,13 +14,16 @@ import { Logout } from './components/Logout/Logout';
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { GameDetails } from './components/GameDetails/GameDetails';
+import { useService } from './hooks/useService';
 
 
 
 function App() {
     const navigate = useNavigate()
     const [games, setGames] = useState([]);
-    const [auth, setAuth] = useState({})
+    const [auth, setAuth] = useState({});
+    const gameService = useService(gameServiceFactory)
+    const authService = useService(authServiceFactory)
 
 
     useEffect(() => {
@@ -32,6 +35,7 @@ function App() {
 
     const onCreateGameSubmit = async (data) => {
         const newGame = await gameService.create(data);
+
         setGames(state => [...state, newGame]);
         navigate('/catalog')
     };
