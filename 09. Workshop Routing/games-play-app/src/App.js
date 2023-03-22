@@ -40,14 +40,31 @@ function App() {
             const result = await authService.login(data);
             console.log(result);
             setAuth(result);
-            navigate('/catalog')
+            navigate('/catalog');
         } catch (error) {
-            console.log('There is a problem');
+            console.log('There is a problem with login');
         }
     };
 
+    const onRegisterSubmit = async (values) => {
+        const { confirmPassword, ...registerData } = values;
+        if (confirmPassword !== registerData.password) {
+            return;
+        }
+        
+        try {
+            const result = await authService.register(values);
+            setAuth(result);
+            navigate('/catalog');
+        } catch (error) {
+            console.log('There is a problem with register');
+
+        }
+    }
+
     const contenxt = {
         onLoginSubmit,
+        onRegisterSubmit,
         userId: auth._id,
         token: auth.accessToken,
         userEmail: auth.email,
