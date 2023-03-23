@@ -42,7 +42,6 @@ function App() {
     const onLoginSubmit = async (data) => {
         try {
             const result = await authService.login(data);
-            console.log(result);
             setAuth(result);
             navigate('/catalog');
         } catch (error) {
