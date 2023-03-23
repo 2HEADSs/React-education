@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom'
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 
 import { gameServiceFactory } from '../../services/gameService';
-import {useService} from '../../hooks/useService'
+import { useService } from '../../hooks/useService';
+import { AuthContext } from '../../contexts/AuthContext';
 
 export const GameDetails = () => {
+    const { userId } = useContext(AuthContext)
     const [username, setUserName] = useState('');
     const [comment, setComment] = useState('');
     const { gameId } = useParams();
@@ -30,6 +32,9 @@ export const GameDetails = () => {
         setUserName('');
         setComment('');
     };
+
+    const isOwner = game._ownerId === userId;
+    console.log(isOwner);
 
     return (
         <section id="game-details">
@@ -63,10 +68,13 @@ export const GameDetails = () => {
                 </div>
 
                 {/* <!-- Edit/Delete buttons ( Only for creator of this game )  --> */}
-                <div className="buttons">
-                    <a href="#" className="button">Edit</a>
-                    <a href="#" className="button">Delete</a>
-                </div>
+                {isOwner && (
+
+                    <div className="buttons">
+                        <a href="#" className="button">Edit</a>
+                        <a href="#" className="button">Delete</a>
+                    </div>
+                )}
             </div>
 
             {/* <!-- Bonus --> */}
