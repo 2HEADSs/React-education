@@ -75,6 +75,7 @@ function App() {
     const onGameEditSubmit = async (values) => {
         const result = await gameService.edit(values._id, values);
 
+        setGames(state => state.map(x => x._id === values._id ? result : x))
         navigate(`/catalog/${values._id}`)
     }
 
