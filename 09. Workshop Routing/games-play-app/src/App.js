@@ -14,6 +14,7 @@ import { Logout } from './components/Logout/Logout';
 import { Login } from "./components/Login/Login";
 import { Register } from "./components/Register/Register";
 import { GameDetails } from './components/GameDetails/GameDetails';
+import { EditGame } from './components/Edit/EditGame';
 
 
 
@@ -69,6 +70,12 @@ function App() {
     const onLogout = async () => {
         await authService.logout();
         setAuth({});
+    };
+
+    const onGameEditSubmit = async (values) => {
+        const result = await gameService.edit(values._id, values);
+
+        navigate(`/catalog/${values._id}`)
     }
 
     const contenxt = {
@@ -84,12 +91,10 @@ function App() {
 
     return (
         <AuthContext.Provider value={contenxt}>
-
             <div id="box">
                 <Header />
                 <main id="main-content">
                     <Routes>
-
                         <Route path='/' element={<Home />} />
                         <Route path='/login' element={<Login />} />
                         <Route path='/logout' element={<Logout />} />
@@ -97,7 +102,7 @@ function App() {
                         <Route path='/create-game' element={<CreateGame onCreateGameSubmit={onCreateGameSubmit} />} />
                         <Route path='/catalog' element={<Catalog games={games} />} />
                         <Route path='/catalog/:gameId' element={<GameDetails />} />
-
+                        <Route path='/catalog/:gameId/edit' element={<EditGame onGameEditSubmit={onGameEditSubmit} />} />
                     </Routes>
                 </main>
                 <Footer />
