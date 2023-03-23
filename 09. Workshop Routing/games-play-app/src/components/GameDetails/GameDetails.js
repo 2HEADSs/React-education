@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { useEffect, useState, useContext } from 'react';
 
 import { gameServiceFactory } from '../../services/gameService';
@@ -12,6 +12,7 @@ export const GameDetails = () => {
     const { gameId } = useParams();
     const [game, setGame] = useState({});
     const gameService = useService(gameServiceFactory)
+    const navigate = useNavigate()
 
     useEffect(() => {
         gameService.getOne(gameId)
@@ -34,7 +35,12 @@ export const GameDetails = () => {
     };
 
     const isOwner = game._ownerId === userId;
-    console.log(isOwner);
+
+    const onDeleteClick = async () => {
+        console.log('asdasd');
+        await gameService.delete(game._id);
+        navigate('/catalog')
+    }
 
     return (
         <section id="game-details">
@@ -72,7 +78,7 @@ export const GameDetails = () => {
 
                     <div className="buttons">
                         <a href="#" className="button">Edit</a>
-                        <a href="#" className="button">Delete</a>
+                        <button className="button" onClick={onDeleteClick}>Delete</button>
                     </div>
                 )}
             </div>

@@ -4,7 +4,7 @@ const baseUrl = 'http://localhost:3030/data/games';
 
 export const gameServiceFactory = (token) => {
     const request = requestFactory(token);
-    
+
     const getAll = async () => {
         const result = await request.get(baseUrl);
         const games = Object.values(result)
@@ -28,10 +28,13 @@ export const gameServiceFactory = (token) => {
         return result;
     };
 
+    const deleteGame = (gameId) => request.del(`${baseUrl}/${gameId}`)
+
     return {
         getAll,
         getOne,
         create,
-        addComment
+        addComment,
+        delete: deleteGame,
     }
 };
